@@ -1,7 +1,6 @@
-from flask import render_template, url_for, flash, redirect
 from connectify import app
+from flask import render_template, url_for, flash, redirect
 from connectify.forms import RegistrationForm, LoginForm
-from connectify.models import User, Post
 
 @app.route("/")
 @app.route("/home")
