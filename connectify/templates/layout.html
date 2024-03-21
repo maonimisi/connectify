@@ -32,10 +32,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pitch</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Explore
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-stickies me-2"></i>Pitch</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-briefcase me-2"></i>Businesses
+                                </a></li>
+                        </ul>
                     </li>
-
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -80,7 +87,7 @@
         </div>
         {% block content %}
         {% endblock content %}
-        <aside class="my-4">
+        <aside class="my-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h5 class="display-6 border-bottom">Contact Us</h5>
@@ -101,7 +108,7 @@
         </aside>
     </main>
 
-    <footer class="container">
+    <footer class="container mt-5">
         <p class="text-center text-muted">
             Copyright&copy; Connectifying Businesses. Designed by Abdulrasheed O. M.</p>
     </footer>

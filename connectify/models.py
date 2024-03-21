@@ -6,6 +6,7 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20), nullable=False)
@@ -13,11 +14,13 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    about_me = db.Column(db.String(100), nullable=True)
     priority = db.Column(db.Integer, nullable=False, default=0)
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self) -> str:
         return f"User('{self.first_name}', '{self.last_name}', '{self.image_file}')"
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
