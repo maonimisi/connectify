@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1 class="display-3 text-center mb-5">Explore Some Businesses Here</h1>
+<div class="row">
+    <!-- <div class="col-lg-6"> -->
+    <h3 class="display-6">{{ post.title }}</h3>
+    <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+    <p class="lh-lg mt-3">{{ post.introduction }}</p>
+</div>
+
+{% if post.author == current_user %}
+<div>
+    <a href="{{ url_for('update', post_id=post.id) }}" class="btn  btn-sm btn-secondary">Update</a>
+    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+        data-bs-target="#deleteModal">Delete</button>
+</div>
+{% endif %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Are you sure you want to delete pitch?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="{{ url_for('delete', post_id=post.id)}}" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

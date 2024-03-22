@@ -13,13 +13,14 @@
             <p class="text-muted">{{ current_user.about_me }}</p>
         </div>
     </div>
+
 </div>
 <form method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-8 mx-3 my-3">
-                <legend class="border-bottom text-center display-5 ">Update Account Info</legend>
+                <legend class="border-bottom display-6 ">Update Account Info</legend>
                 <div class="mb-3">
                     {{ form.first_name.label(class='form-label') }}
                     {% if form.first_name.errors %}
@@ -78,5 +79,4 @@
         </div>
     </fieldset>
 </form>
-
 {% endblock content %}

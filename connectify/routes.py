@@ -2,8 +2,8 @@ import os
 import secrets
 from PIL import Image
 from connectify import app, db, bcrypt
-from flask import render_template, url_for, flash, redirect, request
-from connectify.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from flask import render_template, url_for, flash, redirect, request, abort
+from connectify.forms import RegistrationForm, LoginForm, UpdateAccountForm, PitchForm
 from connectify.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -85,5 +85,74 @@ def account():
     elif request.method == 'GET':
         form.first_name.data = current_user.first_name
         form.last_name.data = current_user.last_name
+        form.about_me.data = current_user.about_me
     image_file = url_for('static', filename='profile/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
+
+
+@app.route('/pitch/new', methods=['GET', 'POST'])
+@login_required
+def pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        pitch = Post(title=form.title.data, author=current_user, introduction=form.introduction.data, problem_statement=form.problem_statement.data, solution=form.solution.data, unique_selling_proposition=form.unique_selling_proposition.data, market_analysis=form.market_analysis.data, target_audience=form.target_audience.data, financial_projection=form.financial_projection.data, risk_assessment=form.risk_assessment.data, conclusion=form.conclusion.data)
+        db.session.add(pitch)
+        db.session.commit()
+        flash('Your pitch has been created!', 'success')
+        return redirect(url_for('business'))
+    return render_template('pitch.html', title='Pitch', legend='Begin Here', form=form)
+
+
+@app.route('/business', methods=['GET', 'POST'])
+def business():
+        posts = Post.query.all()
+        return render_template('business.html', title='Business', posts=posts)
+
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('post.html', title='post.title', post=post)
+
+@app.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
+def update(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = PitchForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.introduction = form.introduction.data
+        post.problem_statement = form.problem_statement.data
+        post.solution = form.solution.data
+        post.unique_selling_proposition = form.unique_selling_proposition.data
+        post.market_analysis = form.market_analysis.data
+        post.target_audience = form.target_audience.data
+        post.financial_projection = form.financial_projection.data
+        post.risk_assessment = form.risk_assessment.data
+        post.conclusion = form.conclusion.data
+        db.session.commit()
+        flash('Pitch has been updated!', 'success')
+        return redirect(url_for('post', post_id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.introduction.data = post.introduction
+        form.problem_statement.data = post.problem_statement
+        form.solution.data = post.solution
+        form.unique_selling_proposition.data = post.unique_selling_proposition
+        form.market_analysis.data = post.market_analysis
+        form.target_audience.data = post.target_audience
+        form.financial_projection.data = post.financial_projection
+        form.risk_assessment.data = post.risk_assessment
+        form.conclusion.data = post.conclusion
+    return render_template('pitch.html', title='Edit Pitch', legend='Edit Pitch', form=form)
+
+@app.route('/post/<int:post_id>/delete', methods=['POST'])
+def delete(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your pitch has been deleted!', 'success')
+    return redirect(url_for('home'))

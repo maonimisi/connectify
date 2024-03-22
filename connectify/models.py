@@ -31,10 +31,8 @@ class Post(db.Model):
     unique_selling_proposition = db.Column(db.String, nullable=False)
     market_analysis = db.Column(db.String, nullable=False)
     target_audience = db.Column(db.String, nullable=False)
-    competitive_analysis = db.Column(db.String, nullable=False)
     financial_projection = db.Column(db.String, nullable=False)
     risk_assessment = db.Column(db.String, nullable=False)
-    team = db.Column(db.String, nullable=False)
     conclusion = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -42,18 +40,3 @@ class Post(db.Model):
 
     def __repr__(self) -> str:
         return f"Post('{self.title}', '{self.problem_statement}', '{self.financial_projection}')"
-    
-posts = [
-    {
-        'author': 'Abdulrasheed Muhammed',
-        'title': 'First Pitch',
-        'content': 'First Pitch Content',
-        'date_posted': 'April 20, 2021'
-    }, 
-    {
-        'author': 'Abdulsabur Muhammed',
-        'title': 'Second Pitch',
-        'content': 'Second Pitch Content',
-        'date_posted': 'April 20, 2022'
-    }
-]

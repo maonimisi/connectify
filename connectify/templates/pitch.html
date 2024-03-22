@@ -1,0 +1,176 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1 class="display-3">Pitch Your Ideas Today</h1>
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <div class="row justify-content-center align-items-center">
+            <div class="mx-3 mb-5 px-5 shadow-sm">
+                <legend class="border-bottom text-center mt-5 display-6 ">{{ legend }}</legend>
+                <div class="mb-3">
+                    {{ form.title.label(class='form-label') }}
+
+                    {% if form.title.errors %}
+                    {{ form.title(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.title(class='form-control') }}
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.introduction.label(class='form-label') }}
+
+                    {% if form.introduction.errors %}
+                    {{ form.introduction(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.introduction.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.introduction(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.problem_statement.label(class='form-label') }}
+
+                    {% if form.problem_statement.errors %}
+                    {{ form.problem_statement(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.problem_statement.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.problem_statement(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.solution.label(class='form-label') }}
+
+                    {% if form.solution.errors %}
+                    {{ form.solution(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.solution.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.solution(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.unique_selling_proposition.label(class='form-label') }}
+
+                    {% if form.unique_selling_proposition.errors %}
+                    {{ form.unique_selling_proposition(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.unique_selling_proposition.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.unique_selling_proposition(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.market_analysis.label(class='form-label') }}
+
+                    {% if form.market_analysis.errors %}
+                    {{ form.market_analysis(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.market_analysis.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.market_analysis(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.target_audience.label(class='form-label') }}
+
+                    {% if form.target_audience.errors %}
+                    {{ form.target_audience(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.target_audience.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.target_audience(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.financial_projection.label(class='form-label') }}
+
+                    {% if form.financial_projection.errors %}
+                    {{ form.financial_projection(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.financial_projection.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.financial_projection(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.risk_assessment.label(class='form-label') }}
+
+                    {% if form.risk_assessment.errors %}
+                    {{ form.risk_assessment(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.risk_assessment.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.risk_assessment(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    {{ form.conclusion.label(class='form-label') }}
+
+                    {% if form.conclusion.errors %}
+                    {{ form.conclusion(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.conclusion.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.conclusion(class='form-control') }}
+                    {% endif %}
+                </div>
+
+
+                <div class="mt-5 mb-3 text-center">
+                    {{ form.submit(class='btn btn-outline-primary d-block w-100') }}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock content%}
