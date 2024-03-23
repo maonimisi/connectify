@@ -24,16 +24,12 @@ class User(db.Model, UserMixin):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    introduction = db.Column(db.String, nullable=False)
-    problem_statement = db.Column(db.String, nullable=False)
-    solution = db.Column(db.String, nullable=False)
-    unique_selling_proposition = db.Column(db.String, nullable=False)
-    market_analysis = db.Column(db.String, nullable=False)
-    target_audience = db.Column(db.String, nullable=False)
-    financial_projection = db.Column(db.String, nullable=False)
-    risk_assessment = db.Column(db.String, nullable=False)
-    conclusion = db.Column(db.String, nullable=False)
+    title = db.Column(db.Text, nullable=False)
+    introduction = db.Column(db.Text, nullable=False)
+    problem_statement = db.Column(db.Text, nullable=False)
+    solution = db.Column(db.Text, nullable=False)
+    market_analysis = db.Column(db.Text, nullable=False)
+    financial_projection = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 

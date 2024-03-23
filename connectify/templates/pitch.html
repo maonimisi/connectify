@@ -1,6 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 <h1 class="display-3">Pitch Your Ideas Today</h1>
+<p class="lead">Ready to take your business idea to the next level? Or perhaps you're looking for the next big
+    investment opportunity? Join connectify today and become part of a dynamic community of entrepreneurs, investors,
+    and innovators who are shaping the future of business. Together, we can bridge ideas and investments and make dreams
+    a reality. Welcome to connectify – where innovation meets opportunity.</p>
+
 <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
@@ -70,21 +75,6 @@
                 </div>
 
 
-                <div class="mb-3">
-                    {{ form.unique_selling_proposition.label(class='form-label') }}
-
-                    {% if form.unique_selling_proposition.errors %}
-                    {{ form.unique_selling_proposition(class='form-control is-invalid') }}
-                    <div class="invalid-feedback">
-                        {% for error in form.unique_selling_proposition.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.unique_selling_proposition(class='form-control') }}
-                    {% endif %}
-                </div>
-
 
                 <div class="mb-3">
                     {{ form.market_analysis.label(class='form-label') }}
@@ -101,23 +91,6 @@
                     {% endif %}
                 </div>
 
-
-                <div class="mb-3">
-                    {{ form.target_audience.label(class='form-label') }}
-
-                    {% if form.target_audience.errors %}
-                    {{ form.target_audience(class='form-control is-invalid') }}
-                    <div class="invalid-feedback">
-                        {% for error in form.target_audience.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.target_audience(class='form-control') }}
-                    {% endif %}
-                </div>
-
-
                 <div class="mb-3">
                     {{ form.financial_projection.label(class='form-label') }}
 
@@ -132,39 +105,6 @@
                     {{ form.financial_projection(class='form-control') }}
                     {% endif %}
                 </div>
-
-
-                <div class="mb-3">
-                    {{ form.risk_assessment.label(class='form-label') }}
-
-                    {% if form.risk_assessment.errors %}
-                    {{ form.risk_assessment(class='form-control is-invalid') }}
-                    <div class="invalid-feedback">
-                        {% for error in form.risk_assessment.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.risk_assessment(class='form-control') }}
-                    {% endif %}
-                </div>
-
-
-                <div class="mb-3">
-                    {{ form.conclusion.label(class='form-label') }}
-
-                    {% if form.conclusion.errors %}
-                    {{ form.conclusion(class='form-control is-invalid') }}
-                    <div class="invalid-feedback">
-                        {% for error in form.conclusion.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.conclusion(class='form-control') }}
-                    {% endif %}
-                </div>
-
 
                 <div class="mt-5 mb-3 text-center">
                     {{ form.submit(class='btn btn-outline-primary d-block w-100') }}

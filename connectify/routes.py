@@ -95,7 +95,7 @@ def account():
 def pitch():
     form = PitchForm()
     if form.validate_on_submit():
-        pitch = Post(title=form.title.data, author=current_user, introduction=form.introduction.data, problem_statement=form.problem_statement.data, solution=form.solution.data, unique_selling_proposition=form.unique_selling_proposition.data, market_analysis=form.market_analysis.data, target_audience=form.target_audience.data, financial_projection=form.financial_projection.data, risk_assessment=form.risk_assessment.data, conclusion=form.conclusion.data)
+        pitch = Post(title=form.title.data, author=current_user, introduction=form.introduction.data, problem_statement=form.problem_statement.data, solution=form.solution.data,  market_analysis=form.market_analysis.data, financial_projection=form.financial_projection.data)
         db.session.add(pitch)
         db.session.commit()
         flash('Your pitch has been created!', 'success')
@@ -125,12 +125,8 @@ def update(post_id):
         post.introduction = form.introduction.data
         post.problem_statement = form.problem_statement.data
         post.solution = form.solution.data
-        post.unique_selling_proposition = form.unique_selling_proposition.data
         post.market_analysis = form.market_analysis.data
-        post.target_audience = form.target_audience.data
         post.financial_projection = form.financial_projection.data
-        post.risk_assessment = form.risk_assessment.data
-        post.conclusion = form.conclusion.data
         db.session.commit()
         flash('Pitch has been updated!', 'success')
         return redirect(url_for('post', post_id=post.id))
@@ -139,12 +135,8 @@ def update(post_id):
         form.introduction.data = post.introduction
         form.problem_statement.data = post.problem_statement
         form.solution.data = post.solution
-        form.unique_selling_proposition.data = post.unique_selling_proposition
         form.market_analysis.data = post.market_analysis
-        form.target_audience.data = post.target_audience
         form.financial_projection.data = post.financial_projection
-        form.risk_assessment.data = post.risk_assessment
-        form.conclusion.data = post.conclusion
     return render_template('pitch.html', title='Edit Pitch', legend='Edit Pitch', form=form)
 
 @app.route('/post/<int:post_id>/delete', methods=['POST'])

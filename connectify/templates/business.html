@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h1 class="display-3 text-center mb-5">Explore Some Businesses Here</h1>
+<h1 class="display-3 text-start text-md-center mb-5">Looking for Business Opportunity?</h1>
+<h3 class="display-6">Find the next business oppportunity shared by some amazing entrepreneurs and innovators today.
+</h3>
 {% for post in posts %}
-<div class="row">
+<div class="row mt-4">
     <h3 class="display-6">{{ post.title }}</h3>
     <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }} </small>
     <p class="lh-lg mt-3">{{ post.introduction }}</p>
