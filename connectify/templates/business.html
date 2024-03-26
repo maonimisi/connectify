@@ -1,15 +1,17 @@
 {% extends 'layout.html' %}
 {% block content %}
 <h1 class="display-3 text-start text-md-center mb-5">Looking for Business Opportunity?</h1>
-<h3 class="display-6">Find the next business oppportunity shared by some amazing entrepreneurs and innovators today.
+<h3 class="display-6">Find the next business oppportunity shared by some amazing entrepreneurs or <a
+        href="{{ url_for('pitch') }}" class="link text-decoration-none">pitch</a> your business idea today.
 </h3>
 {% for post in posts %}
 <div class="row mt-4">
     <h3 class="display-6">{{ post.title }}</h3>
-    <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }} </small>
+    <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }} by <span class="fw-bold">{{
+            current_user.email }}</span></small>
     <p class="lh-lg mt-3">{{ post.introduction }}</p>
     <div>
-        <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary w-100">Read Full Pitch</a>
+        <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary">Read Full Pitch</a>
     </div>
 </div>
 {% endfor %}

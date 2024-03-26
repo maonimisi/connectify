@@ -148,3 +148,4 @@ def delete(post_id):
     db.session.commit()
     flash('Your pitch has been deleted!', 'success')
     return redirect(url_for('home'))
+

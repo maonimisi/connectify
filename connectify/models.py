@@ -33,6 +33,5 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-
     def __repr__(self) -> str:
         return f"Post('{self.title}', '{self.problem_statement}', '{self.financial_projection}')"
