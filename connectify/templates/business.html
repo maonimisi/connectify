@@ -4,7 +4,7 @@
 <h3 class="display-6">Find the next business oppportunity shared by some amazing entrepreneurs or <a
         href="{{ url_for('pitch') }}" class="link text-decoration-none">pitch</a> your business idea today.
 </h3>
-{% for post in posts %}
+{% for post in posts.items %}
 <div class="row mt-4">
     <h3 class="display-6">{{ post.title }}</h3>
     <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }} by <span class="fw-bold">{{
@@ -14,5 +14,17 @@
         <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary">Read Full Pitch</a>
     </div>
 </div>
+{% endfor %}
+
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+{% if posts.page == page_num %}
+<a href="{{ url_for('business', page=page_num) }}" class="btn btn-primary my-5 me-1">{{ page_num }}</a>
+{% else %}
+<a href="{{ url_for('business', page=page_num) }}" class="btn btn-outline-primary my-5 me-1">{{ page_num }}</a>
+{% endif %}
+{% else %}
+...
+{% endif %}
 {% endfor %}
 {% endblock content %}

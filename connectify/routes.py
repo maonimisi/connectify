@@ -105,9 +105,9 @@ def pitch():
 
 @app.route('/business', methods=['GET', 'POST'])
 def business():
-        posts = Post.query.all()
+        page = request.args.get('page', type=int)
+        posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=2)
         return render_template('business.html', title='Business', posts=posts)
-
 
 @app.route('/post/<int:post_id>')
 def post(post_id):
