@@ -8,7 +8,7 @@
 <div class="row mt-4">
     <h3 class="display-6">{{ post.title }}</h3>
     <small class="text-muted">Posted on {{ post.date_posted.strftime('%Y-%m-%d') }} by <span class="fw-bold">{{
-            current_user.email }}</span></small>
+            post.author.email }}</span></small>
     <p class="lh-lg mt-3">{{ post.introduction }}</p>
     <div>
         <a href="{{ url_for('post', post_id=post.id) }}" class="btn btn-outline-primary">Read Full Pitch</a>
